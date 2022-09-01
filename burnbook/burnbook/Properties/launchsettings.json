@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+      "burnbook (Package)": {
+        "commandName": "MsixPackage"
+      },
+      "burnbook (Unpackaged)": {
+        "commandName": "Project"
+      }
+    }
+}
