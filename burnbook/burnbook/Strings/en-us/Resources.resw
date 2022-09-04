@@ -120,9 +120,6 @@
   <data name="AppDisplayName" xml:space="preserve">
     <value>🔥📖</value>
   </data>
-  <data name="AppDescription" xml:space="preserve">
-    <value>A productivity app designed for me 😊</value>
-  </data>
   <data name="Shell_FocusButton.Content" xml:space="preserve">
     <value>Focus Button</value>
   </data>
@@ -175,5 +172,8 @@
     &lt;action content="Settings" arguments="action=Settings"/&gt;
   &lt;/actions&gt;
 &lt;/toast&gt;</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>A productivity app designed for me 😊</value>
   </data>
 </root>

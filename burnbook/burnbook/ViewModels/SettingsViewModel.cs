@@ -2,6 +2,8 @@
 using System.Windows.Input;
 
 using burnbook.Contracts.Services;
+using burnbook.Core.Contracts.Services;
+using burnbook.Core.Services;
 using burnbook.Helpers;
 
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -11,6 +13,7 @@ using Microsoft.UI.Xaml;
 
 using Windows.ApplicationModel;
 
+
 namespace burnbook.ViewModels;
 
 public class SettingsViewModel : ObservableRecipient
@@ -19,6 +22,7 @@ public class SettingsViewModel : ObservableRecipient
     private ElementTheme _elementTheme;
     private string _versionDescription;
 
+    private readonly IFocusButtonService _focusButtonService;
     public ElementTheme ElementTheme
     {
         get => _elementTheme;
@@ -36,7 +40,7 @@ public class SettingsViewModel : ObservableRecipient
         get;
     }
 
-    public SettingsViewModel(IThemeSelectorService themeSelectorService)
+    public SettingsViewModel(IThemeSelectorService themeSelectorService, IFocusButtonService focusButtonService)
     {
         _themeSelectorService = themeSelectorService;
         _elementTheme = _themeSelectorService.Theme;
@@ -51,6 +55,7 @@ public class SettingsViewModel : ObservableRecipient
                     await _themeSelectorService.SetThemeAsync(param);
                 }
             });
+        _focusButtonService = focusButtonService;
     }
 
     private static string GetVersionDescription()
@@ -69,5 +74,11 @@ public class SettingsViewModel : ObservableRecipient
         }
 
         return $"{"AppDisplayName".GetLocalized()} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+    }
+
+    //add dialogue popup
+    internal void ClearLocalData()
+    {
+        _focusButtonService.ClearAllDays();
     }
 }

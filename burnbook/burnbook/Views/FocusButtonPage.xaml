@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:converter="using:Microsoft.Toolkit.Uwp.UI.Converters"
     mc:Ignorable="d">
 
     <Grid x:Name="ContentArea">
@@ -12,11 +11,13 @@
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Click="ClickCounter" Background="CadetBlue" FontSize="75">
-                <TextBlock x:Name="CounterButtonText" TextWrapping="WrapWholeWords"/>
+        <TextBlock x:Name="CounterButtonText" TextWrapping="WrapWholeWords" HorizontalAlignment="Center" FontSize="40" Height="300"/>
+        <TextBlock x:Name="DayNumber" FontSize="60" Height="550" HorizontalAlignment="Center"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Click="ClickCounter" Background="AliceBlue"  Padding="25">
+                <TextBlock Text="🔥" FontSize="45"/>
             </Button>
         </StackPanel>
+        <Button Content="📖 New Day 🌞" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="28" Click="NewDay" Padding="30"/>
     </Grid>
-    
 </Page>

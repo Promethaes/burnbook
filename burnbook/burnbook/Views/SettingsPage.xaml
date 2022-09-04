@@ -62,6 +62,13 @@
                     Style="{ThemeResource BodyTextBlockStyle}" />
                 <HyperlinkButton x:Uid="SettingsPage_PrivacyTermsLink" Margin="{StaticResource SettingsPageHyperlinkButtonMargin}" />
             </StackPanel>
+            <Button x:Name="DeleteButton" Click="DeleteButton_Click">
+                <StackPanel>
+                    <SymbolIcon Symbol="Delete"/>
+                    <TextBlock Text="Delete all local data"/>
+                </StackPanel>
+            </Button>
         </StackPanel>
+        
     </Grid>
 </Page>
