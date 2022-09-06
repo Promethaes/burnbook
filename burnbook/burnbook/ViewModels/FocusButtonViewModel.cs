@@ -17,6 +17,9 @@ public class FocusButtonViewModel : ObservableRecipient, INavigationAware
         => _focusButtonService.UpdateCurrentDay(
             _focusButtonService.GetCurrentDayData().DistractionCounter +
             incrimentValue);
+    public void UpdateMorningRoutine(string key, bool val) => _focusButtonService.UpdateMorningRoutine(key,val);
+    public bool GetCheckboxValue(string key) => _focusButtonService.GetCheckboxValue(key);
+    public void UpdateWakeupTime(TimeSpan time) => _focusButtonService.UpdateWakeupTime(time);
 
     public FocusButtonViewModel(IFocusButtonService focusButtonService)
     {

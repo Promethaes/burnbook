@@ -15,4 +15,8 @@ public class FocusButtonModel
     {
         get; set;
     }
+    [DataMember]
+    public Dictionary<string, bool> MorningRoutine = new();
+    [DataMember]
+    public TimeSpan WakeupTime;
 }

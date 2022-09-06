@@ -22,6 +22,9 @@ public class FocusButtonService : IFocusButtonService
     public Dictionary<string, object> data;
     public int currentDayIndex = 0;
 
+    public Dictionary<string, bool> morningRoutine = new();
+    public TimeSpan wakeupTime = new();
+
     public FocusButtonService()
     {
         data = fileService.Read<Dictionary<string, object>>(dataPath, dataFileName)
@@ -43,22 +46,24 @@ public class FocusButtonService : IFocusButtonService
         var model = new FocusButtonModel();
         model.DistractionCounter = distractionCounter;
         model.dateTime = DateTime.Now;
+        model.MorningRoutine = morningRoutine;
+        model.WakeupTime = wakeupTime;
 
         data[currentDayIndex.ToString()] = JsonConvert.SerializeObject(model);
-        SaveDay();
+        fileService.Save<Dictionary<string, object>>(dataPath, dataFileName, data);
     }
 
     public void OnNewDay()
     {
         currentDayIndex++;
         data["currentDayIndex"] = currentDayIndex;
+        morningRoutine = new();
         UpdateCurrentDay(distractionCounter: 0);
-        SaveDay();
     }
 
     public void SaveDay()
     {
-        fileService.Save<Dictionary<string, object>>(dataPath, dataFileName, data);
+        UpdateCurrentDay(distractionCounter: GetCurrentDayData().DistractionCounter);
     }
 
     public void ClearAllDays()
@@ -75,4 +80,7 @@ public class FocusButtonService : IFocusButtonService
     }
 
     public int GetDayCount() => currentDayIndex + 1;
+    public void UpdateMorningRoutine(string key,bool val) => morningRoutine[key] = val;
+    public bool GetCheckboxValue(string key) => GetCurrentDayData().MorningRoutine.ContainsKey(key) ? GetCurrentDayData().MorningRoutine[key] : false;
+    public void UpdateWakeupTime(TimeSpan time) => wakeupTime = time;
 }

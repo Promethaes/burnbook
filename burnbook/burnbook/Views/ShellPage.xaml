@@ -38,7 +38,7 @@
                 -->
                 <NavigationViewItem x:Uid="Shell_FocusButton" helpers:NavigationHelper.NavigateTo="burnbook.ViewModels.FocusButtonViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE10F;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_TodoList" helpers:NavigationHelper.NavigateTo="burnbook.ViewModels.TodoListViewModel">

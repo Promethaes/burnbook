@@ -4,20 +4,58 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:behaviors="using:burnbook.Behaviors"
+    behaviors:NavigationViewHeaderBehavior.HeaderMode="Never"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea">
+    <Grid x:Name="ContentArea" Padding="40" Width="Auto" Height="Auto">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <TextBlock x:Name="CounterButtonText" TextWrapping="WrapWholeWords" HorizontalAlignment="Center" FontSize="40" Height="300"/>
-        <TextBlock x:Name="DayNumber" FontSize="60" Height="550" HorizontalAlignment="Center"/>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Click="ClickCounter" Background="AliceBlue"  Padding="25">
+        <!--Button-->
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30">
+            <TextBlock x:Name="DayNumber" FontSize="60" HorizontalAlignment="Center" Padding="30"/>
+            <TextBlock x:Name="CounterButtonText" FontSize="40"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30"/>
+            <Button Click="ClickCounter" Background="AliceBlue"  Padding="25" HorizontalAlignment="Center">
                 <TextBlock Text="🔥" FontSize="45"/>
             </Button>
         </StackPanel>
-        <Button Content="📖 New Day 🌞" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="28" Click="NewDay" Padding="30"/>
+
+        <Button Content="📖 New Day 🌞" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="28" Click="NewDay" Padding="30" Grid.Row="2" Grid.Column="1"/>
+        <!--morning routine list-->
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}" Margin="0,0,0,0"
+                    Padding="10">
+            <RichTextBlock>
+                <Paragraph>
+                    <Run FontWeight="Bold" FontSize="20">Morning Routine</Run>
+                </Paragraph>
+            </RichTextBlock>
+            <StackPanel>
+
+                <CheckBox x:Name="SkinCareCheckBox" Content="Skin Care" IsThreeState="True"  
+                      Checked="SkinCareCheckBox_Checked" 
+                      Unchecked="SkinCareCheckBox_Unchecked"
+                      Indeterminate="SkinCareCheckBox_Indeterminate"/>
+                <CheckBox x:Name="ShaveCheckBox" Content="1. Shave" Checked="ShaveCheckBox_Checked" Unchecked="ShaveCheckBox_Unchecked" Margin="24,0,0,0"/>
+                <CheckBox x:Name="AcneTreatmentCheckBox" Content="2. Acne Treatment"  Checked="ShaveCheckBox_Checked" Unchecked="ShaveCheckBox_Unchecked" Margin="24,0,0,0"/>
+                <CheckBox x:Name="TonerCheckBox" Content="3. Toner" Checked="ShaveCheckBox_Checked" Unchecked="ShaveCheckBox_Unchecked" Margin="24,0,0,0"/>
+                <CheckBox x:Name="MoistuerizerCheckBox" Content="4. Moisturizer" Checked="ShaveCheckBox_Checked" Unchecked="ShaveCheckBox_Unchecked" Margin="24,0,0,0"/>
+                <CheckBox x:Name="SunscreenCheckBox" Content="4. Sunscreen" Checked="ShaveCheckBox_Checked" Unchecked="ShaveCheckBox_Unchecked" Margin="24,0,0,0"/>
+            </StackPanel>
+            <CheckBox x:Name="ShowerCheckBox" Content="Shower"></CheckBox>
+            <CheckBox x:Name="YogaCheckBox" Content="Yoga"></CheckBox>
+            <CheckBox x:Name="BreakfastCheckBox" Content="Breakfast"></CheckBox>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}" Margin="0,0,0,0"
+                    Padding="10" Grid.Row="2">
+            <TimePicker x:Name="WakeupTime" Header="When did you wake up?" SelectedTimeChanged="WakeupTime_SelectedTimeChanged"/>
+        </StackPanel>
     </Grid>
 </Page>
